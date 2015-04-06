@@ -51,9 +51,10 @@ module.exports = {
     // A separate bundle will be generated for each
     // bundle config in the list below
     bundleConfigs: [{
-      entries: src + '/javascript/bundle.js',
+      entries: src + '/javascript/app.jsx',
       dest: dest,
-      outputName: 'bundle.js'
+      outputName: 'bundle.js',
+      transform: ['reactify', 'babelify']
     }]
   },
   production: {

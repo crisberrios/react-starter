@@ -1,15 +1,16 @@
 {
-  "name": "static-starter",
-  "version": "0.0.3",
-  "description": "Boilerplate for developing static html sites",
+  "name": "react-starter",
+  "version": "0.0.1",
+  "description": "Boilerplate for developing sites with React",
   "repository": {
     "type": "git",
-    "url": "git://github.com/crisberrios/static-starter.git"
+    "url": "git://github.com/crisberrios/react-starter.git"
   },
   "browser": {
     "jquery": "velocity-animate/node_modules/jquery"
   },
   "devDependencies": {
+    "babelify": "^6.0.1",
     "browser-sync": "~2.2.2",
     "browserify": "^9.0.3",
     "browserify-shim": "^3.8.2",
@@ -37,12 +38,13 @@
     "lodash": "^3.3.1",
     "merge-stream": "^0.1.7",
     "pretty-hrtime": "~1.0.0",
+    "reactify": "^1.1.0",
     "require-dir": "^0.1.0",
-    "velocity-animate": "^1.2.2",
     "vinyl-source-stream": "~1.0.0",
     "watchify": "^2.4.0"
   },
   "dependencies": {
+    "react": "^0.13.1",
     "velocity-animate": "*"
   }
 }
