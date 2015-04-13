@@ -2,11 +2,9 @@
 React ES2015 HTML5 Project Starter
 ============
 
-This project is based on [gulp-starter](https://github.com/greypants/gulp-starter) and includes React, babel, jade templating, HTML5 boilerplate, Normalize, html5shiv, bourbon, neat and bitters.
+This project is based on [gulp-starter](https://github.com/greypants/gulp-starter) and includes React, Babel, Jade templating, HTML5 boilerplate, Normalize, html5shiv, Bourbon, Neat and Bitters in a Browserify/Gulp workflow.
 
-It also includes Velocity and jQuery 2.x (velocity dependency). You can easily remove them from package.json before installing.
-
-It is recommended that you use eslint with eslint-plugin-react with this boilerplate. `npm install -g eslint eslint-plugin-react` 
+It is recommended that you use `eslint` and `eslint-plugin-react` with this project starter. Install them with `npm install -g eslint eslint-plugin-react` 
 
 ### Install npm dependencies
 ```
@@ -14,6 +12,7 @@ npm install
 ```
 
 After that, just run the `default` gulp task with:
+
 ```
 gulp
 ```

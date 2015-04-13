@@ -28,7 +28,7 @@ module.exports = function(config) {
 
     browserify: {
         debug: true,
-        extensions: ['.js', '.coffee', '.hbs']
+        extensions: ['.js']
     },
 
     // test results reporter to use

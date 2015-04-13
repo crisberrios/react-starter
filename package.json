@@ -1,13 +1,10 @@
 {
   "name": "react-starter",
-  "version": "0.0.1",
-  "description": "Boilerplate for developing sites with React",
+  "version": "0.0.2",
+  "description": "Boilerplate for developing sites using React",
   "repository": {
     "type": "git",
     "url": "git://github.com/crisberrios/react-starter.git"
-  },
-  "browser": {
-    "jquery": "velocity-animate/node_modules/jquery"
   },
   "devDependencies": {
     "babelify": "^6.0.2",
@@ -44,7 +41,6 @@
     "watchify": "^3.1.0"
   },
   "dependencies": {
-    "react": "^0.13.1",
-    "velocity-animate": "*"
+    "react": "*"
   }
 }
