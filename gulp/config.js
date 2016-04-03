@@ -48,14 +48,10 @@ module.exports = {
     }
   },
   browserify: {
-    // A separate bundle will be generated for each
-    // bundle config in the list below
-    bundleConfigs: [{
-      entries: src + '/javascript/app.jsx',
-      dest: dest,
-      outputName: 'bundle.js',
-      transform: ['reactify', 'babelify']
-    }]
+      src: src,
+      srcFile: 'app.jsx',
+      outputDir: dest,
+      outputFile: 'bundle.js'
   },
   production: {
     cssSrc: dest + '/css/*.css',
