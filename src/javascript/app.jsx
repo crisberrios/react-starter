@@ -1,7 +1,7 @@
 'use strict';
-
+var ReactDOM = require('react-dom');
 var React = require('react');
 
-var Welcome = require('../jsx/welcome.jsx');
+var Welcome = require('./components/welcome.jsx');
 
-React.render( <Welcome name="YOUR NAME" />, document.getElementById('container'));
+ReactDOM.render( <Welcome name=", you're ready to start building your own app" />, document.getElementById('container'));

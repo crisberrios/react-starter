@@ -11,7 +11,7 @@ var ExampleComponent = React.createClass({
   },
   render: function() {
     return (
-      <p className="example">Welcome to React {this.props.name}!</p>
+      <p className="example">Welcome to React{this.props.name}!</p>
     )
   }
 });
