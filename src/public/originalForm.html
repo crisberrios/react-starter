@@ -1,0 +1,689 @@
+<html>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="page-header">
+        <h1>New Donor</h1>
+    </div>
+    <div class="row">
+        <div class="panel">
+            <div class="panel-body">
+                <form class="form-horizontal">
+                    <div id="name-div" class="form-group">
+                        <label for="name" class="col-lg-2 control-label">First Name</label>
+                        <div class="col-lg-5">
+                            <input class="form-control input-validation-error" data-val="true"
+                                   data-val-required="Required"
+                                   id="name" name="name" type="text" value=""/>
+                <span class="help-inline">
+                    <span class="field-validation-error" data-valmsg-for="name"
+                          data-valmsg-replace="true">
+                        <span id="name-error" for="name" generated="true" class="" style="display:none;">Name is required</span>
+                    </span>
+                </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Label" class="col-lg-2 control-label">Last Name</label>
+                        <div class="col-lg-5">
+                            <input class="form-control" data-val="true"
+                                   data-val-required="Required"
+                                   id="Label" name="Label" type="text" value=""/>
+                <span class="help-inline">
+                    <span class="field-validation-error" data-valmsg-for="Label"
+                          data-valmsg-replace="true">
+                        <span for="Label" generated="true" class=""></span>
+                    </span>
+                </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Label" class="col-lg-2 control-label">Birth Date</label>
+                        <div class="col-lg-5">
+                            <input class="form-control" data-val="true"
+                                   data-val-required="Required"
+                                   id="birth" name="Label" type="text" value="" placeholder="mm/dd/yyyy"/>
+                <span class="help-inline">
+                    <span class="field-validation-error" data-valmsg-for="Label"
+                          data-valmsg-replace="true">
+                        <span for="Label" generated="true" class=""></span>
+                    </span>
+                </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ida" class="col-lg-2 control-label">ID</label>
+                        <div class="col-lg-5">
+                            <input class="form-control" data-val="true"
+                                   data-val-required="Required"
+                                   id="ida" name="ida" type="text" value=""/>
+                <span class="help-inline">
+                    <span class="field-validation-error" data-valmsg-for="Label"
+                          data-valmsg-replace="true">
+                        <span for="Label" generated="true" class=""></span>
+                    </span>
+                </span>
+                        </div>
+                    </div>
+                    <div id="idb-label" class="form-group">
+                        <label for="idb" class="col-lg-2 control-label">Confirm ID</label>
+                        <div class="col-lg-5">
+                            <input class="form-control" data-val="true"
+                                   data-val-required="Required"
+                                   id="idb" name="idb" type="text" value=""/>
+                <span class="help-inline">
+                    <span class="field-validation-error" data-valmsg-for="idb"
+                          data-valmsg-replace="true">
+                        <span id="id-error" for="idb" generated="true" class="">ID fields must match</span>
+                    </span>
+                </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+<script src="js/jquery.maskedinput.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script>
+    var ida;
+    $('#birth').mask("99/99/9999");
+    $('#name').on('blur', function() {
+        if ($(this).val() === '') {
+            $('#name-error').show();
+            $('#name-div').addClass('has-error');
+        } else {
+            $('#name-error').hide();
+            $('#name-div').removeClass('has-error');
+        }
+    });
+    $('#ida').blur(function() {
+        ida = $(this).val();
+        $(this).val('******').prop('disabled',true);
+    });
+    $('#idb').blur(function() {
+        if ($(this).val() !== ida) {
+            $('#id-error').show();
+            $('#idb-label').addClass('has-error');
+            $('#ida').prop('disabled',false).val('');
+        } else {
+            $('#id-error').hide();
+            $('#idb').val('******').prop('disabled',true);
+            $('#idb-label').removeClass('has-error');
+        }
+    });
+
+</script>
+
+<script>
+    var automaticallyPopulateFromPostalCode = false;
+    var validateAddresses = false;
+
+    if (automaticallyPopulateFromPostalCode) {
+        selectCityDialog.config.citySelector = "#donorAddress\\.city";
+        selectCityDialog.config.provinceSelector = "#donorAddress\\.province";
+        selectCityDialog.config.countrySelector = "#donorAddress\\.country";
+        selectCityDialog.config.postalCodeSelector = "#donorAddress\\.postalCode";
+        selectCityDialog.config.finishSelector = "#finish";
+        selectCityDialog.config.cancelSelector = "#cancel";
+    }
+
+    if (validateAddresses) {
+        selectAddressDialog.config.formSelector = "#newDonor";
+        selectAddressDialog.config.addr1Selector = "#donorAddress\\.addr1";
+        selectAddressDialog.config.addr2Selector = "#donorAddress\\.addr2";
+        selectAddressDialog.config.citySelector = "#donorAddress\\.city";
+        selectAddressDialog.config.provinceSelector = "#donorAddress\\.province";
+        selectAddressDialog.config.countrySelector = "#donorAddress\\.country";
+        selectAddressDialog.config.postalCodeSelector = "#donorAddress\\.postalCode";
+        selectAddressDialog.config.latitudeSelector = "#donorAddress\\.latitude";
+        selectAddressDialog.config.longitudeSelector = "#donorAddress\\.longitude";
+        selectAddressDialog.config.finishSelector = "#finish";
+        selectAddressDialog.config.cancelSelector = "#cancel";
+        selectAddressDialog.config.validationServiceWasDownSelector = "#validationServiceWasDown";
+        selectAddressDialog.config.validateAddressUrl = "<c:url value='/api/validateNewDonorAddress'/>";
+    }
+
+    $(document).ready(function () {
+        $("#birthDate").mask("99/99/9999");
+        $("#primaryMandatoryIdentValidUntilDateInput").mask("99/99/9999");
+        $("#primaryMandatoryIdentConfirmValidUntilDateInput").mask("99/99/9999");
+        $("#secondaryMandatoryIdentValidUntilDateInput").mask("99/99/9999");
+        $("#secondaryMandatoryIdentConfirmValidUntilDateInput").mask("99/99/9999");
+        if (phoneNumberMask != "") {
+            $("#phoneNumber").mask(phoneNumberMask);
+        }
+
+        $("#primaryMandatoryIdentType").bind("keyup change", primaryIdentTypeChanged);
+        $("#secondaryMandatoryIdentType").bind("keyup change", secondaryIdentTypeChanged);
+
+        $("#primaryMandatoryIdentInput").bind("change", primaryIdentChanged);
+        $("#primaryMandatoryIdentInput").bind("keydown", checkForIdentChangesOnEnter);
+        $("#primaryMandatoryIdentConfirmInput").bind("change", primaryIdentConfirmChanged);
+        $("#primaryMandatoryIdentConfirmInput").bind("keydown", checkForIdentChangesOnEnter);
+        $("#primaryMandatoryIdentValidUntilDateInput").bind("change", primaryValidUntilChanged);
+        $("#primaryMandatoryIdentValidUntilDateInput").bind("keydown", checkForIdentChangesOnEnter);
+        $("#primaryMandatoryIdentConfirmValidUntilDateInput").bind("change", primaryValidUntilConfirmChanged);
+        $("#primaryMandatoryIdentConfirmValidUntilDateInput").bind("keydown", checkForIdentChangesOnEnter);
+        $("#secondaryMandatoryIdentInput").bind("change", secondaryIdentChanged);
+        $("#secondaryMandatoryIdentInput").bind("keydown", checkForIdentChangesOnEnter);
+        $("#secondaryMandatoryIdentConfirmInput").bind("change", secondaryIdentConfirmChanged);
+        $("#secondaryMandatoryIdentConfirmInput").bind("keydown", checkForIdentChangesOnEnter);
+        $("#secondaryMandatoryIdentValidUntilDateInput").bind("change", secondaryValidUntilChanged);
+        $("#secondaryMandatoryIdentValidUntilDateInput").bind("keydown", checkForIdentChangesOnEnter);
+        $("#secondaryMandatoryIdentConfirmValidUntilDateInput").bind("change", secondaryValidUntilConfirmChanged);
+        $("#secondaryMandatoryIdentConfirmValidUntilDateInput").bind("keydown", checkForIdentChangesOnEnter);
+
+        hideNoMatchErrorMessages();
+
+        setIdentValues();
+
+        primaryIdentTypeChanged(true);
+        secondaryIdentTypeChanged(true);
+
+        setIdentValues();
+        hideAndDisableIdentValues();
+    });
+
+    function setIdentValues() {
+        // Set the values of the input fields in case the page is returning from failed validation
+        $("#primaryMandatoryIdentInput").val($("#primaryMandatoryIdentValue").val());
+        $("#primaryMandatoryIdentConfirmInput").val($("#primaryMandatoryIdentConfirmValue").val());
+        $("#secondaryMandatoryIdentInput").val($("#secondaryMandatoryIdentValue").val());
+        $("#secondaryMandatoryIdentConfirmInput").val($("#secondaryMandatoryIdentConfirmValue").val());
+        $("#primaryMandatoryIdentValidUntilDateInput").val($("#primaryMandatoryIdentValidUntilValue").val());
+        $("#primaryMandatoryIdentConfirmValidUntilDateInput").val($("#primaryMandatoryIdentValidUntilConfirmValue").val());
+        $("#secondaryMandatoryIdentValidUntilDateInput").val($("#secondaryMandatoryIdentValidUntilValue").val());
+        $("#secondaryMandatoryIdentConfirmValidUntilDateInput").val($("#secondaryMandatoryIdentValidUntilConfirmValue").val());
+    }
+    ;
+
+    function hideAndDisableIdentValues() {
+        if ($("#primaryMandatoryIdentValue").val()) {
+            hideAndDisable($("#primaryMandatoryIdentInput"));
+        }
+        if ($("#primaryMandatoryIdentConfirmValue").val()) {
+            hideAndDisable($("#primaryMandatoryIdentConfirmInput"));
+        }
+        if ($("#secondaryMandatoryIdentValue").val()) {
+            hideAndDisable($("#secondaryMandatoryIdentInput"));
+        }
+        if ($("#secondaryMandatoryIdentConfirmValue").val()) {
+            hideAndDisable($("#secondaryMandatoryIdentConfirmInput"));
+        }
+        if ($("#primaryMandatoryIdentValidUntilValue").val()) {
+            hideAndDisable($("#primaryMandatoryIdentValidUntilDateInput"));
+        }
+        if ($("#primaryMandatoryIdentValidUntilConfirmValue").val()) {
+            hideAndDisable($("#primaryMandatoryIdentConfirmValidUntilDateInput"));
+        }
+        if ($("#secondaryMandatoryIdentValidUntilValue").val()) {
+            hideAndDisable($("#secondaryMandatoryIdentValidUntilDateInput"));
+        }
+        if ($("#secondaryMandatoryIdentValidUntilConfirmValue").val()) {
+            hideAndDisable($("#secondaryMandatoryIdentConfirmValidUntilDateInput"));
+        }
+    }
+
+    function primaryIdentTypeChanged(isPageLoad) {
+        var identType = $('#primaryMandatoryIdentType').val();
+        var primaryMandatoryIdentTypesMap = null;
+        applyMask($("#primaryMandatoryIdentInput"), $("#primaryMandatoryIdentConfirmInput"), identType);
+
+        if (isPageLoad == true && $("#primaryMandatoryIdentInput").val() != "" && $("#primaryMandatoryIdentConfirmInput").val() != "") {
+            // Double-blind entry with both values
+            if (false == false) {
+                hideAndDisable($("#primaryMandatoryIdentInput"));
+                hideAndDisable($("#primaryMandatoryIdentConfirmInput"));
+                hideAndDisable($("#primaryMandatoryIdentValidUntilDateInput"));
+                hideAndDisable($("#primaryMandatoryIdentConfirmValidUntilDateInput"));
+            } else {
+                clearFieldsForNewIdentType(
+                        $("#primaryMandatoryIdentInput"),
+                        $("#primaryMandatoryIdentConfirmInput"),
+                        $("#primaryMandatoryIdentValue"),
+                        $("#primaryMandatoryIdentConfirmValue"),
+                        $("#primaryMandatoryIdentConfirmTextField")
+                );
+                clearFieldsForNewIdentType(
+                        $("#primaryMandatoryIdentValidUntilDateInput"),
+                        $("#primaryMandatoryIdentConfirmValidUntilDateInput"),
+                        $("#primaryMandatoryIdentValidUntilDateValue"),
+                        isPageLoad === true ? null : $("#primaryMandatoryIdentValidUntilConfirmValue"),
+                        $("#primaryMandatoryIdentValidUntilConfirmField")
+                );
+            }
+        } else if ((isPageLoad == true && $("#primaryMandatoryIdentInput").val() == "") ||
+                (isPageLoad == true && $("#primaryMandatoryIdentConfirmInput").val() == "" &&
+                identType != "" && primaryMandatoryIdentTypesMap[identType].isDoubleBlindEntry) || isPageLoad != true) {
+            clearFieldsForNewIdentType(
+                    $("#primaryMandatoryIdentInput"),
+                    $("#primaryMandatoryIdentConfirmInput"),
+                    $("#primaryMandatoryIdentValue"),
+                    $("#primaryMandatoryIdentConfirmValue"),
+                    $("#primaryMandatoryIdentConfirmTextField")
+            );
+            clearFieldsForNewIdentType(
+                    $("#primaryMandatoryIdentValidUntilDateInput"),
+                    $("#primaryMandatoryIdentConfirmValidUntilDateInput"),
+                    $("#primaryMandatoryIdentValidUntilDateValue"),
+                    isPageLoad === true ? null : $("#primaryMandatoryIdentValidUntilConfirmValue"),
+                    $("#primaryMandatoryIdentValidUntilConfirmField")
+            );
+            removeWarning($("#primaryMandatoryIdentInput"));
+        }
+        if (identType != "" && primaryMandatoryIdentTypesMap[identType].isDoubleBlindEntry) {
+            disableCutCopyPaste($("#primaryMandatoryIdentInput"), $("#primaryMandatoryIdentConfirmInput"));
+            $("#primaryMandatoryIdentConfirmTextField").show();
+        } else {
+            enableCutCopyPaste($("#primaryMandatoryIdentInput"), $("#primaryMandatoryIdentConfirmInput"));
+            $("#primaryMandatoryIdentConfirmTextField").hide();
+        }
+
+        if (identType != "" && primaryMandatoryIdentTypesMap[identType].doesExpire) {
+            $("#primaryMandatoryIdentValidUntilField").show();
+            if (primaryMandatoryIdentTypesMap[identType].isDoubleBlindEntry) {
+                disableCutCopyPaste($("#primaryMandatoryIdentValidUntilDateInput"), $("#primaryMandatoryIdentConfirmValidUntilDateInput"));
+                $("#primaryMandatoryIdentValidUntilConfirmField").show();
+            } else {
+                enableCutCopyPaste($("#primaryMandatoryIdentValidUntilDateInput"), $("#primaryMandatoryIdentConfirmValidUntilDateInput"));
+                $("#primaryMandatoryIdentValidUntilConfirmField").hide();
+            }
+        } else {
+            $("#primaryMandatoryIdentValidUntilField").hide();
+            $("#primaryMandatoryIdentValidUntilConfirmField").hide();
+        }
+    }
+
+    function secondaryIdentTypeChanged(isPageLoad) {
+        var identType = $('#secondaryMandatoryIdentType').val();
+        var secondaryMandatoryIdentTypesMap = null;
+        applyMask($("#secondaryMandatoryIdentInput"), $("#secondaryMandatoryIdentConfirmInput"), identType);
+
+        if (isPageLoad == true && $("#secondaryMandatoryIdentInput").val() != "" && $("#secondaryMandatoryIdentConfirmInput").val() != "") {
+            // Double-blind entry with both values
+            if (false == false) {
+                hideAndDisable($("#secondaryMandatoryIdentInput"));
+                hideAndDisable($("#secondaryMandatoryIdentConfirmInput"));
+                hideAndDisable($("#secondaryMandatoryIdentValidUntilDateInput"));
+                hideAndDisable($("#secondaryMandatoryIdentConfirmValidUntilDateInput"));
+            } else {
+                clearFieldsForNewIdentType($("#secondaryMandatoryIdentInput"), $("#secondaryMandatoryIdentConfirmInput"),
+                        $("#secondaryMandatoryIdentValue"), $("#secondaryMandatoryIdentConfirmValue"), $("#secondaryMandatoryIdentConfirmTextField"));
+                clearFieldsForNewIdentType($("#secondaryMandatoryIdentValidUntilDateInput"), $("#secondaryMandatoryIdentConfirmValidUntilDateInput"),
+                        $("#secondaryMandatoryIdentValidUntilDateValue"),
+                        isPageLoad === true ? null : $("#secondaryMandatoryIdentValidUntilConfirmValue"), $("#secondaryMandatoryIdentValidUntilConfirmField"));
+            }
+        } else if ((isPageLoad == true && $("#secondaryMandatoryIdentInput").val() == "") ||
+                (isPageLoad == true && $("#secondaryMandatoryIdentConfirmInput").val() == "" &&
+                identType != "" && secondaryMandatoryIdentTypesMap[identType].isDoubleBlindEntry) || isPageLoad != true) {
+            clearFieldsForNewIdentType($("#secondaryMandatoryIdentInput"), $("#secondaryMandatoryIdentConfirmInput"),
+                    $("#secondaryMandatoryIdentValue"), $("#secondaryMandatoryIdentConfirmValue"), $("#secondaryMandatoryIdentConfirmTextField"));
+            clearFieldsForNewIdentType($("#secondaryMandatoryIdentValidUntilDateInput"), $("#secondaryMandatoryIdentConfirmValidUntilDateInput"),
+                    $("#secondaryMandatoryIdentValidUntilDateValue"),
+                    isPageLoad === true ? null : $("#secondaryMandatoryIdentValidUntilConfirmValue"), $("#secondaryMandatoryIdentValidUntilConfirmField"));
+            removeWarning($("#secondaryMandatoryIdentInput"));
+        }
+
+        if (identType != "" && secondaryMandatoryIdentTypesMap[identType].isDoubleBlindEntry) {
+            disableCutCopyPaste($("#secondaryMandatoryIdentInput"), $("#secondaryMandatoryIdentConfirmInput"));
+            $("#secondaryMandatoryIdentConfirmTextField").show();
+        } else {
+            enableCutCopyPaste($("#secondaryMandatoryIdentInput"), $("#secondaryMandatoryIdentConfirmInput"));
+            $("#secondaryMandatoryIdentConfirmTextField").hide();
+        }
+
+        if (identType != "" && secondaryMandatoryIdentTypesMap[identType].doesExpire) {
+            $("#secondaryMandatoryIdentValidUntilField").show();
+            if (secondaryMandatoryIdentTypesMap[identType].isDoubleBlindEntry) {
+                $("#secondaryMandatoryIdentValidUntilConfirmField").show();
+            } else {
+                $("#secondaryMandatoryIdentValidUntilConfirmField").hide();
+            }
+        } else {
+            $("#secondaryMandatoryIdentValidUntilField").hide();
+            $("#secondaryMandatoryIdentValidUntilConfirmField").hide();
+        }
+    }
+
+    function primaryIdentChanged() {
+        var identType = $('#primaryMandatoryIdentType').val();
+        // If an ident type has been selected
+        if (identType != "") {
+            var primaryMandatoryIdentTypesMap = false;
+            if (primaryMandatoryIdentTypesMap[identType].isDoubleBlindEntry) {
+                // If confirm value is not empty, other field has already been set
+                if ($("#primaryMandatoryIdentConfirmValue").val() != "") {
+                    return validateMatch($("#primaryMandatoryIdentInput"), $("#primaryMandatoryIdentConfirmInput"),
+                            $("#primaryMandatoryIdentValue"), $("#primaryMandatoryIdentConfirmValue"), $("#primaryMandatoryIdentInput"));
+                } else if ($("#primaryMandatoryIdentInput").val() != "") {
+                    // Otherwise only this field has been altered
+                    $("#primaryMandatoryIdentValue").val($("#primaryMandatoryIdentInput").val());
+                    hideAndDisable($("#primaryMandatoryIdentInput"));
+                    return true;
+                }
+            } else {
+                // Not double-blind entry
+                $("#primaryMandatoryIdentValue").val($("#primaryMandatoryIdentInput").val());
+                return true;
+            }
+        }
+    }
+
+    function primaryIdentConfirmChanged() {
+        var identType = $('#primaryMandatoryIdentType').val();
+        // If an ident type has been selected
+        if (identType != "") {
+            var primaryMandatoryIdentTypesMap = null;
+            if (primaryMandatoryIdentTypesMap[identType].isDoubleBlindEntry) {
+                // If ident value is not empty, other field has already been set
+                if ($("#primaryMandatoryIdentValue").val() != "") {
+                    return validateMatch($("#primaryMandatoryIdentConfirmInput"), $("#primaryMandatoryIdentInput"),
+                            $("#primaryMandatoryIdentConfirmValue"), $("#primaryMandatoryIdentValue"), $("#primaryMandatoryIdentInput"));
+                } else if ($("#primaryMandatoryIdentConfirmInput").val() != "") {
+                    // Otherwise only this field has been altered
+                    $("#primaryMandatoryIdentConfirmValue").val($("#primaryMandatoryIdentConfirmInput").val());
+                    hideAndDisable($("#primaryMandatoryIdentConfirmInput"));
+                    return true;
+                }
+            }
+        }
+    }
+
+    function primaryValidUntilChanged() {
+        var identType = $('#primaryMandatoryIdentType').val();
+        // If an ident type has been selected
+        if (identType != "") {
+            var primaryMandatoryIdentTypesMap = null;
+            if (primaryMandatoryIdentTypesMap[identType].doesExpire) {
+                // If the ident type does expire
+                if (primaryMandatoryIdentTypesMap[identType].isDoubleBlindEntry) {
+                    // If confirm value is not empty, other field has already been set
+                    if ($("#primaryMandatoryIdentValidUntilConfirmValue").val() != "") {
+                        return validateMatch($("#primaryMandatoryIdentValidUntilDateInput"), $("#primaryMandatoryIdentConfirmValidUntilDateInput"),
+                                $("#primaryMandatoryIdentValidUntilValue"), $("#primaryMandatoryIdentValidUntilConfirmValue"), $("#primaryMandatoryIdentValidUntilDateInput"));
+                    } else if ($("#primaryMandatoryIdentValidUntilDateInput").val() != "") {
+                        // Otherwise only this field has been altered
+                        $("#primaryMandatoryIdentValidUntilValue").val($("#primaryMandatoryIdentValidUntilDateInput").val());
+                        hideAndDisable($("#primaryMandatoryIdentValidUntilDateInput"));
+                        return true;
+                    }
+                } else {
+                    // Not double-blind entry
+                    $("#primaryMandatoryIdentValidUntilValue").val($("#primaryMandatoryIdentValidUntilDateInput").val());
+                    return true;
+                }
+            }
+        }
+    }
+
+    function primaryValidUntilConfirmChanged() {
+        var identType = $('#primaryMandatoryIdentType').val();
+        // If an ident type has been selected
+        if (identType != "") {
+            var primaryMandatoryIdentTypesMap = null;
+            if (primaryMandatoryIdentTypesMap[identType].doesExpire) {
+                if (primaryMandatoryIdentTypesMap[identType].isDoubleBlindEntry) {
+                    // If valid until value is not empty, other field has already been set
+                    if ($("#primaryMandatoryIdentValidUntilValue").val() != "") {
+                        return validateMatch($("#primaryMandatoryIdentConfirmValidUntilDateInput"), $("#primaryMandatoryIdentValidUntilDateInput"),
+                                $("#primaryMandatoryIdentValidUntilConfirmValue"), $("#primaryMandatoryIdentValidUntilValue"), $("#primaryMandatoryIdentValidUntilDateInput"));
+                    } else if ($("#primaryMandatoryIdentConfirmValidUntilDateInput").val() != "") {
+                        // Otherwise only this field has been altered
+                        $("#primaryMandatoryIdentValidUntilConfirmValue").val($("#primaryMandatoryIdentConfirmValidUntilDateInput").val());
+                        hideAndDisable($("#primaryMandatoryIdentConfirmValidUntilDateInput"));
+                        return true;
+                    }
+                }
+            }
+        }
+    }
+
+    function secondaryIdentChanged() {
+        var identType = $('#secondaryMandatoryIdentType').val();
+        // If an ident type has been selected
+        if (identType != "") {
+            var secondaryMandatoryIdentTypesMap = null;
+            if (secondaryMandatoryIdentTypesMap[identType].isDoubleBlindEntry) {
+                // If confirm value is not empty, other field has already been set
+                if ($("#secondaryMandatoryIdentConfirmValue").val() != "") {
+                    return validateMatch($("#secondaryMandatoryIdentInput"), $("#secondaryMandatoryIdentConfirmInput"),
+                            $("#secondaryMandatoryIdentValue"), $("#secondaryMandatoryIdentConfirmValue"), $("#secondaryMandatoryIdentInput"));
+                } else if ($("#secondaryMandatoryIdentInput").val() != "") {
+                    // Otherwise only this field has been altered
+                    $("#secondaryMandatoryIdentValue").val($("#secondaryMandatoryIdentInput").val());
+                    hideAndDisable($("#secondaryMandatoryIdentInput"));
+                    return true;
+                }
+            } else {
+                // Not double-blind entry
+                $("#secondaryMandatoryIdentValue").val($("#secondaryMandatoryIdentInput").val());
+                return true;
+            }
+        }
+    }
+
+    function secondaryIdentConfirmChanged() {
+        var identType = $('#secondaryMandatoryIdentType').val();
+        // If an ident type has been selected
+        if (identType != "") {
+            var secondaryMandatoryIdentTypesMap = null;
+            if (secondaryMandatoryIdentTypesMap[identType].isDoubleBlindEntry) {
+                // If ident value is not empty, other field has already been set
+                if ($("#secondaryMandatoryIdentValue").val() != "") {
+                    return validateMatch($("#secondaryMandatoryIdentConfirmInput"), $("#secondaryMandatoryIdentInput"),
+                            $("#secondaryMandatoryIdentConfirmValue"), $("#secondaryMandatoryIdentValue"), $("#secondaryMandatoryIdentInput"));
+                } else if ($("#secondaryMandatoryIdentConfirmInput").val() != "") {
+                    // Otherwise only this field has been altered
+                    $("#secondaryMandatoryIdentConfirmValue").val($("#secondaryMandatoryIdentConfirmInput").val());
+                    hideAndDisable($("#secondaryMandatoryIdentConfirmInput"));
+                    return true;
+                }
+            }
+        }
+    }
+
+    function secondaryValidUntilChanged() {
+        var identType = $('#secondaryMandatoryIdentType').val();
+        // If an ident type has been selected
+        if (identType != "") {
+            var secondaryMandatoryIdentTypesMap = null;
+            if (secondaryMandatoryIdentTypesMap[identType].doesExpire) {
+                // If the ident type does expire
+                if (secondaryMandatoryIdentTypesMap[identType].isDoubleBlindEntry) {
+                    // If confirm value is not empty, other field has already been set
+                    if ($("#secondaryMandatoryIdentValidUntilConfirmValue").val() != "") {
+                        return validateMatch($("#secondaryMandatoryIdentValidUntilDateInput"), $("#secondaryMandatoryIdentConfirmValidUntilDateInput"),
+                                $("#secondaryMandatoryIdentValidUntilValue"), $("#secondaryMandatoryIdentValidUntilConfirmValue"), $("#secondaryMandatoryIdentValidUntilDateInput"));
+                    } else if ($("#secondaryMandatoryIdentValidUntilDateInput").val() != "") {
+                        // Otherwise only this field has been altered
+                        $("#secondaryMandatoryIdentValidUntilValue").val($("#secondaryMandatoryIdentValidUntilDateInput").val());
+                        hideAndDisable($("#secondaryMandatoryIdentValidUntilDateInput"));
+                        return true;
+                    }
+                } else {
+                    // Not double-blind entry
+                    $("#secondaryMandatoryIdentValidUntilValue").val($("#secondaryMandatoryIdentValidUntilDateInput").val());
+                    return true;
+                }
+            }
+        }
+    }
+
+    function secondaryValidUntilConfirmChanged() {
+        var identType = $('#secondaryMandatoryIdentType').val();
+        // If an ident type has been selected
+        if (identType != "") {
+            var secondaryMandatoryIdentTypesMap = null;
+            if (secondaryMandatoryIdentTypesMap[identType].doesExpire) {
+                if (secondaryMandatoryIdentTypesMap[identType].isDoubleBlindEntry) {
+                    // If valid until value is not empty, other field has already been set
+                    if ($("#secondaryMandatoryIdentValidUntilValue").val() != "") {
+                        return validateMatch($("#secondaryMandatoryIdentConfirmValidUntilDateInput"), $("#secondaryMandatoryIdentValidUntilDateInput"),
+                                $("#secondaryMandatoryIdentValidUntilConfirmValue"), $("#secondaryMandatoryIdentValidUntilValue"), $("#secondaryMandatoryIdentValidUntilDateInput"));
+                    } else if ($("#secondaryMandatoryIdentConfirmValidUntilDateInput").val() != "") {
+                        // Otherwise only this field has been altered
+                        $("#secondaryMandatoryIdentValidUntilConfirmValue").val($("#secondaryMandatoryIdentConfirmValidUntilDateInput").val());
+                        hideAndDisable($("#secondaryMandatoryIdentConfirmValidUntilDateInput"));
+                        return true;
+                    }
+                }
+            }
+        }
+    }
+
+    // Validate that inputField1 matches valueField2 and hide and disable the fields if so.
+    // If they don't match, clear the fields and show an error
+    function validateMatch(inputField1, inputField2, valueField1, valueField2, warningField) {
+        if (!fieldsMatch(inputField1, valueField2)) {
+            clearAndEnableFields(inputField1, inputField2,
+                    valueField1, valueField2);
+            addWarning(warningField, "${identValuesDoNotMatchErrorMsg}");
+            return false;
+        } else {
+            valueField1.val(inputField1.val());
+            hideAndDisable(inputField1);
+            hideAndDisable(inputField2);
+            removeWarning(warningField);
+            return true;
+        }
+    }
+
+    function applyMask(field1, field2, identType) {
+        field1.unmask();
+        field2.unmask();
+        var maskMap = null;
+        var formatMask = maskMap[identType];
+        if (formatMask != null && formatMask != '') {
+            field1.mask(formatMask);
+            field2.mask(formatMask);
+        }
+    }
+
+    function hideAndDisable(field) {
+        var hiddenString = "";
+        for (var i = 0; i < field.val().length; i++) {
+            hiddenString += "\u2022";
+        }
+        field.val(hiddenString);
+        setTimeout(function () {
+            field.attr("disabled", true);
+        }, 0);
+    }
+
+    function clearFieldsForNewIdentType(inputField1, inputField2, valueField1, valueField2, textField) {
+        inputField1 && inputField1.removeAttr("disabled");
+        inputField2 && inputField2.removeAttr("disabled");
+        inputField1 && inputField1.val("");
+        inputField2 && inputField2.val("");
+        valueField1 && valueField1.val("");
+        valueField2 && valueField2.val("");
+        textField.hide();
+    }
+
+    function clearAndEnableFields(inputField1, inputField2, valueField1, valueField2) {
+        inputField1 && inputField1.val("");
+        inputField2 && inputField2.val("");
+        inputField1 && inputField1.removeAttr("disabled");
+        inputField2 && inputField2.removeAttr("disabled");
+        valueField1 && valueField1.val("");
+        valueField2 && valueField2.val("");
+    }
+
+    function fieldsMatch(field1, field2) {
+        if (field1.val() == field2.val()) {
+            return true;
+        }
+        return false;
+    }
+
+    function hideNoMatchErrorMessages() {
+        removeWarning($("#primaryMandatoryIdentInput"));
+        removeWarning($("#secondaryMandatoryIdentInput"));
+        removeWarning($("#primaryMandatoryIdentValidUntilDateInput"));
+        removeWarning($("#secondaryMandatoryIdentValidUntilDateInput"));
+    }
+
+    function disableCutCopyPaste(field1, field2) {
+        field1.unbind("cut copy paste", allowCutCopyPaste);
+        field2.unbind("cut copy paste", allowCutCopyPaste);
+        field1.bind("cut copy paste", preventCutCopyPaste);
+        field2.bind("cut copy paste", preventCutCopyPaste);
+    }
+
+    function enableCutCopyPaste(field1, field2) {
+        field1.unbind("cut copy paste", preventCutCopyPaste);
+        field2.unbind("cut copy paste", preventCutCopyPaste);
+        field1.bind("cut copy paste", allowCutCopyPaste);
+        field2.bind("cut copy paste", allowCutCopyPaste);
+    }
+
+    function preventCutCopyPaste(event) {
+        event.preventDefault();
+    }
+
+    function allowCutCopyPaste() {
+        return true;
+    }
+
+    function checkForIdentChangesOnEnter(event) {
+        if (event.keyCode == 13) {
+            event.preventDefault();
+            var submit = false;
+            if (event.target.id == "primaryMandatoryIdentInput") {
+                submit = primaryIdentChanged();
+            } else if (event.target.id == "primaryMandatoryIdentConfirmInput") {
+                submit = primaryIdentConfirmChanged();
+            } else if (event.target.id == "primaryMandatoryIdentValidUntilDateInput") {
+                submit = primaryValidUntilChanged()
+            } else if (event.target.id == "primaryMandatoryIdentConfirmValidUntilDateInput") {
+                submit = primaryValidUntilConfirmChanged()
+            } else if (event.target.id == "secondaryMandatoryIdentInput") {
+                submit = secondaryIdentChanged();
+            } else if (event.target.id == "secondaryMandatoryIdentConfirmInput") {
+                submit = secondaryIdentConfirmChanged();
+            } else if (event.target.id == "secondaryMandatoryIdentValidUntilDateInput") {
+                submit = secondaryValidUntilChanged()
+            } else if (event.target.id == "secondaryMandatoryIdentConfirmValidUntilDateInput") {
+                submit = secondaryValidUntilConfirmChanged()
+            }
+
+            if (submit == true) {
+                $("#finish").click();
+            }
+        }
+    }
+
+    function addWarning(element, message) {
+        if (!element.hasClass('fieldWarningText')) {
+            element.addClass('fieldWarningText');
+            var parent = element.parents('.formElementCell');
+            var warnSpan = $('<span/>')
+                    .addClass('txtError')
+                    .html(message);
+            $('<div/>').addClass('formErrorMsg')
+                    .append(warnSpan)
+                    .appendTo(parent);
+        } else {
+            element.parents('.formElementCell')
+                    .children('.txtError')
+                    .html(message);
+        }
+    }
+
+    function removeWarning(element) {
+        if (element.hasClass('fieldWarningText')) {
+            element.removeClass('fieldWarningText');
+            element.parents('.formElementCell')
+                    .children('.formErrorMsg')
+                    .remove();
+        }
+    }
+</script>
+</body>
+</html>
