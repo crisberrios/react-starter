@@ -59,7 +59,7 @@ gulp.task('browserify', function () {
 
   const bundler = browserify(config.src + '/javascript/' + config.srcFile, args) // Browserify
     .plugin(watchify, { ignoreWatch: ['**/node_modules/**', '**/bower_components/**'] }) // Watchify to watch source file changes
-    .transform(babelify, { presets: ['es2015', 'react'] }); // Babel tranforms
+    .transform(babelify, { presets: ['es2015','stage-1', 'react'], plugins: ['transform-decorators-legacy'] }); // Babel tranforms
 
   bundle(bundler); // Run the bundle the first time (required for Watchify to kick in)
 

@@ -1,7 +1,19 @@
-'use strict';
-var ReactDOM = require('react-dom');
-var React = require('react');
+import ReactDOM from 'react-dom';
+import React from 'react';
+import Joi from 'joi';
+import Form from './components/Form.jsx';
 
-var Welcome = require('./components/welcome.jsx');
+//Define our validation Schema
+const schema = Joi.object().keys({
+  firstName: Joi.string().required().label('First Name'),
+  userId: Joi.string().required().label('Id'),
+  confirmUserId: Joi.string().valid(Joi.ref('userId')).options({
+    language: {
+      any: {
+        allowOnly: 'don\'t match',
+      },
+    },
+  }).required().label('Confirm User Id'),
+});
 
-ReactDOM.render( <Welcome name=", you're ready to start building your own app" />, document.getElementById('container'));
+ReactDOM.render(<Form schema={ schema } />, document.getElementById('container'));

@@ -4,4 +4,11 @@
 @import "base/base";
 @import "textures/textures";
 
+.container {
+  @include outer-container(50%);
+}
 
+h1 {
+  font-family: $helvetica;
+  font-size: golden-ratio(16px,  1);
+}
